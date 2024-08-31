@@ -36,7 +36,7 @@ export default function HomePage() {
   };
 
   return (
-    <div className="flex justify-center items-center h-screen bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white">
       <div className="bg-white bg-opacity-20 backdrop-filter backdrop-blur-lg rounded-lg shadow-lg p-8 w-full max-w-md">
         <h1 className="text-4xl font-bold mb-4">SHA-256 Кодировщик</h1>
         <form onSubmit={handleSubmit} className="space-y-4">
@@ -44,13 +44,13 @@ export default function HomePage() {
             <label htmlFor="input-text" className="block font-medium mb-1">
               Введите текст:
             </label>
-            <input
-              type="text"
+            <textarea
               id="input-text"
               value={inputText}
               onChange={handleInputChange}
-              className="bg-white bg-opacity-50 backdrop-filter backdrop-blur-lg rounded-md px-4 py-2 w-full"
-            />
+              rows={inputText.split('\n').length}
+              className="bg-white bg-opacity-50 backdrop-filter backdrop-blur-lg rounded-md px-4 py-2 w-full resize-none"
+            ></textarea>
           </div>
           <div className="flex justify-between">
             <button
