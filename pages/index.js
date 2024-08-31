@@ -39,7 +39,7 @@ export default function HomePage() {
     <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white">
       <div className="bg-white bg-opacity-20 backdrop-filter backdrop-blur-lg rounded-lg shadow-lg p-8 w-full max-w-md">
         <h1 className="text-4xl font-bold mb-4">SHA-256 Кодировщик</h1>
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit} className="space-y-4 w-full">
           <div>
             <label htmlFor="input-text" className="block font-medium mb-1">
               Введите текст:
@@ -48,7 +48,7 @@ export default function HomePage() {
               id="input-text"
               value={inputText}
               onChange={handleInputChange}
-              rows={inputText.split('\n').length}
+              rows={Math.max(1, inputText.split('\n').length)}
               className="bg-white bg-opacity-50 backdrop-filter backdrop-blur-lg rounded-md px-4 py-2 w-full resize-none"
             ></textarea>
           </div>
@@ -71,12 +71,15 @@ export default function HomePage() {
         {hashedText && (
           <div
             onClick={handleCopy}
-            className="mt-6 bg-white bg-opacity-50 backdrop-filter backdrop-blur-lg rounded-md px-4 py-2 cursor-pointer hover:bg-opacity-75 transition-all duration-300"
+            className="mt-6 bg-white bg-opacity-50 backdrop-filter backdrop-blur-lg rounded-md px-4 py-2 cursor-pointer hover:bg-opacity-75 transition-all duration-300 w-full"
           >
             <h2 className="text-lg font-medium">Закодированный текст:</h2>
             <p className="text-xl font-bold">{hashedText}</p>
           </div>
         )}
+        <div className="mt-6 text-center">
+          Разработчик: <a href="https://vk.com/chatbotist" className="text-indigo-300 hover:text-indigo-400">Дмитрий Юрчук</a>
+        </div>
       </div>
     </div>
   );
